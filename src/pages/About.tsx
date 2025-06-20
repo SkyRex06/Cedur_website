@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Users, Target, Award, Globe } from 'lucide-react';
 
@@ -57,24 +56,44 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Values Section - Updated with Motto and Illustrated Values */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-xl text-gray-600">The principles that guide everything we do</p>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Our Motto: Outthink, Outwork, Outlast</h2>
+            <div className="text-2xl font-semibold text-gray-800 mb-6">We are driven by our values<span className="font-normal">–</span></div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white mx-auto mb-6">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="flex flex-col items-center text-center">
+              <span className="text-6xl mb-4">🏪</span>
+              <span className="font-semibold text-lg mb-1">Championing Small Businesses</span>
+              <span className="text-gray-700 text-lg">Small businesses are the heartbeat of India's economy, and we exist to empower them.</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-6xl mb-4">🤝</span>
+              <span className="font-semibold text-lg mb-1">Service Above Self</span>
+              <span className="text-gray-700 text-lg">We put our customers first, always striving to deliver with a service mindset.</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-6xl mb-4">📈</span>
+              <span className="font-semibold text-lg mb-1">Relentless Ambition</span>
+              <span className="text-gray-700 text-lg">We dream big, set bold goals, and work tirelessly to turn them into reality.</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-6xl mb-4">❤️</span>
+              <span className="font-semibold text-lg mb-1">Humble Growth</span>
+              <span className="text-gray-700 text-lg">We celebrate collective wins and value humility over individual accolades.</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-6xl mb-4">💸</span>
+              <span className="font-semibold text-lg mb-1">Mastery in Action</span>
+              <span className="text-gray-700 text-lg">We take pride in our expertise and are committed to continuous learning.</span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <span className="text-6xl mb-4">🧑‍🤝‍🧑</span>
+              <span className="font-semibold text-lg mb-1">Forging Greatness Together</span>
+              <span className="text-gray-700 text-lg">We trust the process, support each other, and scale new heights as a team.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -88,7 +107,10 @@ const About = () => {
           <p className="text-xl text-purple-100 mb-8">
             Be part of the HR revolution and help us build the future of workforce management.
           </p>
-          <button className="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-medium hover:shadow-xl transition-all duration-200 hover:scale-105">
+          <button
+            className="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-medium hover:shadow-xl transition-all duration-200 hover:scale-105"
+            onClick={() => window.location.href = '/signup'}
+          >
             Get Started Today
           </button>
         </div>

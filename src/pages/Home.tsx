@@ -1,9 +1,26 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Clock, DollarSign, Shield, BarChart3, Zap } from 'lucide-react';
 
 const Home = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for theme preference
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark';
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
   const features = [
     {
       icon: <DollarSign className="w-6 h-6" />,
@@ -37,11 +54,30 @@ const Home = () => {
     }
   ];
 
-  const stats = [
-    { number: '2.6M+', label: 'Employees' },
-    { number: '16M+', label: 'Payroll Runs' },
-    { number: '800+', label: 'Companies' }
+  // FAQ data for accordion
+  const faqs = [
+    {
+      question: 'How do I get started with Cedur?',
+      answer:
+        'Simply create a free account, choose your plan, and add your company details. Our onboarding process will guide you step by step.',
+    },
+    {
+      question: 'Is my data secure?',
+      answer:
+        'Yes, we use industry-standard security practices and encryption to keep your data safe and private at all times.',
+    },
+    {
+      question: 'Can I upgrade or downgrade my plan later?',
+      answer:
+        'Absolutely! You can change your plan at any time from your account dashboard with no hassle.',
+    },
+    {
+      question: 'Do you offer customer support?',
+      answer:
+        'Yes, our support team is available via chat, email, and phone to help you with any questions or issues.',
+    },
   ];
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen">
@@ -66,15 +102,16 @@ const Home = () => {
                 to="/signup"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:shadow-xl transition-all duration-200 hover:scale-105 flex items-center gap-2"
               >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
+                Get Started
               </Link>
-              <Link
-                to="/features"
+              <a
+                href="https://www.youtube.com/watch?v=ef4H1tpr_78" // Replace with your actual demo video link
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-white/30 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white/10 transition-all duration-200 flex items-center gap-2"
               >
-                View Features
-              </Link>
+                Demo Video
+              </a>
             </div>
           </div>
         </div>
@@ -82,20 +119,6 @@ const Home = () => {
         {/* Decorative Elements */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index} className="p-6">
-                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.number}</div>
-                <div className="text-lg text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Features Section */}
@@ -133,28 +156,94 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-blue-600 py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+      <section className="relative bg-gradient-to-r from-purple-600 to-blue-600 py-20 overflow-hidden">
+        {/* Decorative blurred shapes */}
+        <div className="absolute -top-16 -left-16 w-72 h-72 bg-white/10 rounded-full blur-3xl z-0"></div>
+        <div className="absolute -bottom-24 right-0 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl z-0"></div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
             Ready to Transform Your HR Operations?
           </h2>
-          <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of companies that trust Cedur to streamline their HR processes 
-            and empower their workforce.
+          <p className="text-xl text-purple-100 mb-12 max-w-2xl mx-auto">
+            You're three steps away from easy, automated payroll.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {/* Step 1 */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center shadow-lg border border-white/20 hover:scale-105 transition-transform">
+              <div className="bg-gradient-to-br from-purple-500 to-blue-500 w-16 h-16 flex items-center justify-center rounded-full mb-4 shadow-md">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <div className="font-bold text-lg text-white mb-2">Create an account</div>
+              <div className="text-purple-100 text-sm">It's free to sign up. You'll pick your plan and add your company details.</div>
+            </div>
+            {/* Step 2 */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center shadow-lg border border-white/20 hover:scale-105 transition-transform">
+              <div className="bg-gradient-to-br from-purple-500 to-blue-500 w-16 h-16 flex items-center justify-center rounded-full mb-4 shadow-md">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <div className="font-bold text-lg text-white mb-2">Add your people</div>
+              <div className="text-purple-100 text-sm">Add your employee details. They can even self-onboard to save you time.</div>
+            </div>
+            {/* Step 3 */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center shadow-lg border border-white/20 hover:scale-105 transition-transform">
+              <div className="bg-gradient-to-br from-purple-500 to-blue-500 w-16 h-16 flex items-center justify-center rounded-full mb-4 shadow-md">
+                <DollarSign className="w-8 h-8 text-white" />
+              </div>
+              <div className="font-bold text-lg text-white mb-2">Run your first Payroll</div>
+              <div className="text-purple-100 text-sm">Once we have your employee and tax info, you can run payroll in just a few clicks.</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+            <button
+              className="bg-gradient-to-r from-purple-700 to-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow hover:opacity-90 transition-colors text-lg border border-white/30"
+              onClick={() => window.open('tel:+918595921201', '_self')}
+            >
+              Call us 
+            </button>
             <Link
               to="/signup"
-              className="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-medium hover:shadow-xl transition-all duration-200 hover:scale-105"
+              className="border border-white text-white py-3 px-8 rounded-lg text-lg font-medium hover:bg-white/10 transition-all duration-200"
             >
-              Start Free Trial Today
+              Create Account
             </Link>
-            <Link
-              to="/contact"
-              className="border border-white text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white/10 transition-all duration-200"
-            >
-              Talk to Sales
-            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Compact FAQ Section */}
+      <section className="bg-white py-16 border-t border-gray-200">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="rounded-lg border border-gray-200 bg-gray-50">
+                <button
+                  className="w-full flex justify-between items-center p-5 focus:outline-none"
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  aria-expanded={openFaq === idx}
+                  aria-controls={`faq-answer-${idx}`}
+                >
+                  <span className="font-semibold text-lg text-purple-700 text-left">{faq.question}</span>
+                  <svg
+                    className={`w-5 h-5 text-purple-500 transform transition-transform duration-200 ${openFaq === idx ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openFaq === idx && (
+                  <div
+                    id={`faq-answer-${idx}`}
+                    className="px-5 pb-5 text-gray-700 animate-fade-in"
+                  >
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

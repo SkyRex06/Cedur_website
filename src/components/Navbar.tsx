@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -10,105 +9,55 @@ const Navbar = () => {
   const navigation = [
     { name: 'Features', href: '/features' },
     { name: 'Pricing', href: '/pricing' },
-    { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+    <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex items-center justify-between rounded-full shadow-md px-6 py-2">
+          {/* Logo on the left */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">Cedur</span>
+            <img src="/cedur-logo.png" alt="Cedur Logo" className="h-8 w-auto" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-purple-600 ${
-                  location.pathname === item.href
-                    ? 'text-purple-600'
-                    : 'text-gray-700'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/login"
-              className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors"
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-200 hover:scale-105"
-            >
-              Get Started
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-purple-600 transition-colors"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
+          {/* Navigation in the center */}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-4 py-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block px-3 py-2 text-base font-medium transition-colors hover:text-purple-600 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-150 hover:bg-white hover:text-purple-700 ${
                     location.pathname === item.href
-                      ? 'text-purple-600'
+                      ? 'bg-white text-purple-700 shadow'
                       : 'text-gray-700'
                   }`}
-                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="px-3 py-2 space-y-2">
-                <Link
-                  to="/login"
-                  className="block text-base font-medium text-gray-700 hover:text-purple-600 transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium text-center hover:shadow-lg transition-all duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Get Started
-                </Link>
-              </div>
             </div>
           </div>
-        )}
+
+          {/* Auth Buttons on the right */}
+          <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-2 py-1">
+            <Link
+              to="/login"
+              className="px-5 py-2 rounded-full text-sm font-medium transition-colors duration-150 bg-white text-gray-700 hover:bg-gray-200"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/signup"
+              className="px-5 py-2 rounded-full text-sm font-medium transition-colors duration-150 bg-gray-900 text-white hover:bg-gray-800"
+            >
+              Sign Up
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
   );
