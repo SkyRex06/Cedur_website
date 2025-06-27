@@ -44,7 +44,7 @@ const Features = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 py-20">
+      <section className="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Powerful Features for Modern HR Teams
@@ -57,21 +57,25 @@ const Features = () => {
       </section>
 
       {/* Main Features */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {mainFeatures.map((feature, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-200">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6">
-                  {feature.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {mainFeatures.map((feature, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-white via-purple-50 to-blue-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-200 hover:-translate-y-1 border border-gray-100 group flex flex-col h-full">
+                <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400 shadow-lg group-hover:scale-105 transition-transform">
+                  {React.cloneElement(feature.icon, { className: 'w-8 h-8 text-white drop-shadow' })}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
-                <ul className="space-y-2">
-                  {feature.features.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700">{item}</span>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight group-hover:text-purple-700 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed text-base mb-4">
+                  {feature.description}
+                </p>
+                <ul className="list-none space-y-2 mb-4">
+                  {feature.features.map((f, i) => (
+                    <li key={i} className="flex items-center gap-2 text-gray-700 text-sm">
+                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 text-purple-700"><CheckCircle className="w-4 h-4" /></span>
+                      {f}
                     </li>
                   ))}
                 </ul>

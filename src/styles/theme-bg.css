@@ -1,0 +1,6 @@
+body.light-bg {
+  background: linear-gradient(135deg, #fcf7f5 0%, #ede9fe 100%) !important;
+}
+body.dark-bg {
+  background: linear-gradient(135deg, #18181b 0%, #3b0764 100%) !important;
+}

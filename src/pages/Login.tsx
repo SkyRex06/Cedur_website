@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 py-12 px-4 sm:px-6 lg:px-8 pt-36">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-12 px-4 sm:px-6 lg:px-8 pt-36">
       <div className="max-w-md w-full space-y-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white rounded-3xl shadow-2xl p-10 border border-purple-100">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <img src="/cedur-logo.png" alt="Cedur Logo" className="w-34 h-10  rounded-lg shadow" />
+              <img src="/cedur-logo.png" alt="Cedur Logo" className="w-36 h-10 rounded-lg shadow" />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
+            <h2 className="text-3xl font-extrabold text-gray-900">Welcome back</h2>
             <p className="mt-2 text-gray-600">Sign in to your account</p>
           </div>
 
@@ -24,7 +24,7 @@ const Login = () => {
                 name="email"
                 type="email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400 shadow-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -38,7 +38,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400 shadow-sm"
                 placeholder="Enter your password"
               />
             </div>

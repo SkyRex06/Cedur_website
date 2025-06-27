@@ -99,7 +99,7 @@ const Pricing = () => {
 
 	return (
       <div className="min-h-screen pt-12 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 pb-24">
-    <section className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 py-20 border-b border-gray-200">
+    <section className="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Transparent Plans for Every Business

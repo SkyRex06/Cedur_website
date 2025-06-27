@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<string | null>("0-0");
 
   const faqs = [
   {
@@ -105,60 +105,52 @@ const FAQ = () => {
 
   const toggleFAQ = (categoryIndex: number, questionIndex: number) => {
     const index = categoryIndex * 100 + questionIndex;
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(openIndex === index.toString() ? null : index.toString());
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 py-20">
+      <section className="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Frequently Asked Questions
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Find answers to common questions about Cedur's features, pricing, security, 
-            and how we can help streamline your HR operations.
+            Find answers to common questions about Cedur's platform, features, and support.
           </p>
         </div>
       </section>
 
-      {/* FAQ Content */}
-      <section className="py-20 bg-white">
+      {/* FAQ Section */}
+      <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">
-                {category.category}
-              </h2>
+          {faqs.map((cat, catIdx) => (
+            <div key={catIdx} className="mb-10">
+              <h2 className="text-2xl font-bold text-purple-700 mb-6">{cat.category}</h2>
               <div className="space-y-4">
-                {category.questions.map((faq, questionIndex) => {
-                  const index = categoryIndex * 100 + questionIndex;
-                  const isOpen = openIndex === index;
-                  
+                {cat.questions.map((q, qIdx) => {
+                  const idx = `${catIdx}-${qIdx}`;
+                  const isOpen = openIndex === idx;
                   return (
-                    <div
-                      key={questionIndex}
-                      className="bg-gray-50 rounded-lg overflow-hidden"
-                    >
+                    <div key={idx} className="rounded-2xl border border-purple-100 bg-white shadow-md">
                       <button
-                        onClick={() => toggleFAQ(categoryIndex, questionIndex)}
-                        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200"
+                        className="w-full flex justify-between items-center p-6 focus:outline-none group"
+                        onClick={() => setOpenIndex(isOpen ? null : idx)}
+                        aria-expanded={isOpen}
+                        aria-controls={`faq-answer-${idx}`}
                       >
-                        <span className="text-lg font-medium text-gray-900">
-                          {faq.question}
+                        <span className="font-semibold text-lg text-purple-700 text-left">{q.question}</span>
+                        <span className="ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-700 group-hover:bg-purple-200 transition">
+                          {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                         </span>
-                        {isOpen ? (
-                          <ChevronUp className="w-5 h-5 text-purple-600 flex-shrink-0" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                        )}
                       </button>
                       {isOpen && (
-                        <div className="px-6 pb-4">
-                          <p className="text-gray-600 leading-relaxed">
-                            {faq.answer}
-                          </p>
+                        <div
+                          id={`faq-answer-${idx}`}
+                          className="px-6 pb-6 text-gray-700 animate-fade-in"
+                        >
+                          {q.answer}
                         </div>
                       )}
                     </div>
@@ -169,28 +161,6 @@ const FAQ = () => {
           ))}
         </div>
       </section>
-
-      {/* Still Have Questions */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Still Have Questions?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Our support team is here to help. Get in touch and we'll respond within 24 hours.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105"
-              onClick={() => window.location.href = '/contact'}
-            >
-              Contact Support
-            </button>
-          </div>
-        </div>
-      </section>
-
-      
     </div>
   );
 };
