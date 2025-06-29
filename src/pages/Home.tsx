@@ -176,12 +176,12 @@ const Home = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-white via-purple-50 to-blue-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-200 hover:-translate-y-1 border border-gray-100 group"
+                className="bg-gradient-to-br from-white via-teal-50 to-blue-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-200 hover:-translate-y-1 border border-gray-100 group"
               >
-                <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400 shadow-lg group-hover:scale-105 transition-transform">
+                <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-full bg-gradient-to-br from-teal-600 via-blue-500 to-yellow-400 shadow-lg group-hover:scale-105 transition-transform">
                   {React.cloneElement(feature.icon as React.ReactElement, { className: 'w-8 h-8 text-white drop-shadow' })}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight group-hover:text-purple-700 transition-colors">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight group-hover:text-teal-700 transition-colors">
                   {feature.title}
                 </h3>
                 <p className="text-gray-700 leading-relaxed text-base">

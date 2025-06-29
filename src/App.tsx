@@ -16,6 +16,10 @@ import Footer from "./components/Footer";
 import NotFound from "./pages/NotFound";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Policy from "./pages/Policy";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import UpdateProfile from "./pages/UpdateProfile";
+import ChangePassword from "./pages/ChangePassword";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +43,10 @@ const App = () => (
               <Route path="/signup" element={<Signup />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
               <Route path="/policy" element={<Policy />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/update-profile" element={<UpdateProfile />} />
+              <Route path="/change-password" element={<ChangePassword />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

@@ -15,16 +15,28 @@ const ContactForm = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple validation
     if (!form.firstName || !form.lastName || !form.email || !form.message) {
       setError('Please fill in all required fields.');
       return;
     }
     setError('');
-    setSubmitted(true);
-    // Here you would send the form data to your backend or email service
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.firstName + ' ' + form.lastName,
+          email: form.email,
+          message: form.message
+        })
+      });
+      if (!res.ok) throw new Error('Failed to send message.');
+      setSubmitted(true);
+    } catch (err) {
+      setError('Failed to send message. Please try again later.');
+    }
   };
 
   if (submitted) {
@@ -45,7 +57,7 @@ const ContactForm = () => {
             name="firstName"
             value={form.firstName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
             placeholder="John"
             required
             autoComplete="off"
@@ -58,7 +70,7 @@ const ContactForm = () => {
             name="lastName"
             value={form.lastName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
             placeholder="Doe"
             required
             autoComplete="off"
@@ -72,7 +84,7 @@ const ContactForm = () => {
           name="email"
           value={form.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
           placeholder="john@example.com"
           required
           autoComplete="off"
@@ -85,7 +97,7 @@ const ContactForm = () => {
           name="company"
           value={form.company}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
           placeholder="Your Company"
           autoComplete="off"
         />
@@ -97,7 +109,7 @@ const ContactForm = () => {
           rows={6}
           value={form.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent bg-white text-gray-900 placeholder-gray-400"
           placeholder="Tell us how we can help you..."
           required
           autoComplete="off"
@@ -106,7 +118,7 @@ const ContactForm = () => {
       {error && <div className="text-red-600 text-sm">{error}</div>}
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105"
+        className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105"
       >
         Send Message
       </button>

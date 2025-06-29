@@ -98,8 +98,8 @@ const Pricing = () => {
 	const [expanded, setExpanded] = useState(Array(plans.length).fill(true));
 
 	return (
-      <div className="min-h-screen pt-12 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 pb-24">
-    <section className="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-20">
+      <div className="min-h-screen pt-12 bg-gradient-to-br from-teal-100 via-blue-100 to-yellow-100 pb-24">
+    <section className="bg-gradient-to-br from-teal-700 via-blue-500 to-yellow-400 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Transparent Plans for Every Business
@@ -119,7 +119,7 @@ const Pricing = () => {
         >
           {plan.recommended && (
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-32 text-center z-20">
-              <div className="bg-blue-100 text-blue-700 font-semibold rounded-full py-1 px-4 shadow text-xs tracking-wide uppercase border border-blue-200">
+              <div className="bg-yellow-400 text-gray-900 font-semibold rounded-full py-1 px-4 shadow text-xs tracking-wide uppercase border border-yellow-300">
                 Recommended
               </div>
             </div>
@@ -127,7 +127,7 @@ const Pricing = () => {
           <h3 className="text-2xl font-bold mb-2 mt-8 text-center text-blue-900 tracking-wide">
             {plan.name}
           </h3>
-          <div className="text-2xl font-semibold mb-2 text-center text-blue-800 flex items-end gap-2">
+          <div className="text-2xl font-semibold mb-2 text-center text-teal-700 flex items-end gap-2">
             {plan.price}
             <span className="text-base font-normal text-gray-500 mb-1">
               / {plan.period}
@@ -137,7 +137,7 @@ const Pricing = () => {
             Up to {plan.seats} Employees
           </div>
           <button
-            className="border border-blue-600 text-blue-700 font-semibold rounded-lg px-6 py-2 mb-6 bg-white hover:bg-blue-50 transition-colors text-base"
+            className="border border-teal-600 text-white font-semibold rounded-lg px-6 py-2 mb-6 bg-teal-500 hover:bg-teal-600 transition-colors text-base"
             onClick={() => navigate('/signup')}
           >
             Create an Account
@@ -145,7 +145,7 @@ const Pricing = () => {
           <ul className="w-full text-left text-gray-800 text-base mb-4 space-y-2">
             {plan.features.map((f, i) => (
               <li key={i} className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0" />
                 <span>{f}</span>
               </li>
             ))}

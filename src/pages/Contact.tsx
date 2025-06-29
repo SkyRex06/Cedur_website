@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-16 bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-20">
+      <section className="bg-gradient-to-br from-teal-700 via-blue-500 to-yellow-400 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Get in Touch
@@ -23,7 +23,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white rounded-3xl p-10 shadow-2xl border border-purple-100">
+            <div className="bg-white rounded-3xl p-10 shadow-2xl border border-blue-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
               <ContactForm />
             </div>
@@ -39,7 +39,7 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-r from-purple-600 to-purple-400 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+                  <div className="w-14 h-14 bg-gradient-to-r from-teal-600 to-blue-400 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-lg">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
@@ -50,7 +50,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-r from-purple-600 to-purple-400 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+                  <div className="w-14 h-14 bg-gradient-to-r from-yellow-400 to-teal-400 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-lg">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>

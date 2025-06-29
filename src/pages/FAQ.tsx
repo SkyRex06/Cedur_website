@@ -111,7 +111,7 @@ const FAQ = () => {
   return (
     <div className="min-h-screen pt-16 bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-700 via-purple-500 to-purple-400 py-20">
+      <section className="bg-gradient-to-br from-teal-700 via-blue-700 to-blue-400 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Frequently Asked Questions
@@ -127,21 +127,21 @@ const FAQ = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {faqs.map((cat, catIdx) => (
             <div key={catIdx} className="mb-10">
-              <h2 className="text-2xl font-bold text-purple-700 mb-6">{cat.category}</h2>
+              <h2 className="text-2xl font-bold text-teal-700 mb-6">{cat.category}</h2>
               <div className="space-y-4">
                 {cat.questions.map((q, qIdx) => {
                   const idx = `${catIdx}-${qIdx}`;
                   const isOpen = openIndex === idx;
                   return (
-                    <div key={idx} className="rounded-2xl border border-purple-100 bg-white shadow-md">
+                    <div key={idx} className="rounded-2xl border border-blue-100 bg-white shadow-md">
                       <button
                         className="w-full flex justify-between items-center p-6 focus:outline-none group"
                         onClick={() => setOpenIndex(isOpen ? null : idx)}
                         aria-expanded={isOpen}
                         aria-controls={`faq-answer-${idx}`}
                       >
-                        <span className="font-semibold text-lg text-purple-700 text-left">{q.question}</span>
-                        <span className="ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-700 group-hover:bg-purple-200 transition">
+                        <span className="font-semibold text-lg text-blue-700 text-left">{q.question}</span>
+                        <span className="ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-yellow-100 text-teal-700 group-hover:bg-yellow-200 transition">
                           {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                         </span>
                       </button>
