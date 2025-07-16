@@ -1,73 +1,81 @@
-# Welcome to your Cedur project
 
-## Project info
+# Cedur Website
 
-**URL**: https://cedur.dev/projects/448ca866-b8f6-49d1-b306-81e7be9a8c1e
+Cedur is a modern HR and payroll management platform designed to simplify operations for businesses of all sizes. This repository contains the source code for the Cedur website, including the frontend (React, Vite, Tailwind, shadcn-ui) and backend (Node.js, Express, MongoDB).
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Modern, responsive UI built with React, Vite, and Tailwind CSS
+- Custom color palette for a visually appealing look
+- Pages: Home, Features, Pricing, FAQ, Login, Signup, About, Contact, Terms, Policy, Dashboard, Profile, and more
+- Authentication (Login/Signup)
+- Contact form with backend integration
+- Dynamic pricing cards and feature highlights
+- FAQ accordion and information pages
+- Backend API for user management and contact submissions
 
-**Use Cedur**
+## Technologies Used
 
-Simply visit the [Cedur Project](https://cedur.dev/projects/448ca866-b8f6-49d1-b306-81e7be9a8c1e) and start prompting.
+- Frontend: React, Vite, TypeScript, Tailwind CSS, shadcn-ui
+- Backend: Node.js, Express, MongoDB (Mongoose)
 
-Changes made via Cedur will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
+- Node.js & npm
+- MongoDB Atlas or local MongoDB instance
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Cedur.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+### Installation
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
+cd cedur-Website
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies for frontend
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies for backend
+cd backend
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Environment Variables
+
+Create a `.env` file in the `backend/` directory:
+```
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_here
+PORT=5000
+```
+
+### Running Locally
+
+#### Backend
+```sh
+cd backend
+npm start
+```
+
+#### Frontend
+```sh
+cd ..
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Deploy the frontend using Vercel, Netlify, or Railway
+- Deploy the backend using Railway or Render
+- Set environment variables in your deployment platform
 
-**Use GitHub Codespaces**
+### Custom Domain
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+You can connect a custom domain via your deployment platform or Cedur dashboard.
 
-## What technologies are used for this project?
+## Contributing
 
-This project is built with:
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## License
 
-## How can I deploy this project?
-
-Simply open [Cedur](https://cedur.dev/projects/448ca866-b8f6-49d1-b306-81e7be9a8c1e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Cedur project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.cedur.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License.
